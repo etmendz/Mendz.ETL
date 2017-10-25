@@ -13,10 +13,10 @@ Mendz.ETL adds two optional ingredients:
 1. Validator, which can be used to validate the source (before extracting) or the target (after loading).
 2. Joiner, which can be used to extract, query and join multiple sources in to mappable inputs.
 ## The Router
-When the ingredients are ready, they can be routed to execute the ETL operation.
+When the ingredients are ready, they can be put together and routed to execute the ETL operation.
 Mendz.ETL has the Router, which provides the following methods:
 - Route(), which routes the source via mapper to target.
-- ChainRoute(), which routes the source via mapper to target, and chains the result to another mapper/target pair, and so on.
+- ChainRoute(), which routes the source via mapper to target, and chains the result to another mapper/target pair, and then another, and so on.
 - MergeRoute(), which routes multiple source/mapper pairs to target.
 - SplitRoute(), which routes a source to multiple mapper/target pairs.
 - JoinRoute(), which joins multiple sources and routes the result via mapper to target.
