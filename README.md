@@ -21,10 +21,10 @@ Mendz.ETL has the Router, which provides the following methods:
 - SplitRoute(), which routes a source to multiple mapper/target pairs.
 - JoinRoute(), which joins multiple sources and routes the result via mapper to target.
 - JoinSplitRoute(), which joins multiple sources and routes the result to multiple mapper/target pairs.
-## What is Mendz.ETL For?
+## What is Mendz.ETL for?
 Mendz.ETL is a foundational library of APIs that can be used to create custom/proprietary ETL products and their SDKs.
 
-Mendz.ETL provides the tools and guidance to building the different ingredients of an ETL solution.
+Mendz.ETL provides the tools and guidance for building the different ingredients of an ETL solution.
 These ingredients are designed to work together to complete an extract, transform and load data flow.
 The ingredients can be created to explicitly solve a simple ETL requirement. Or,
 they can also be created "generic" and configuration driven to solve for various complex ETL requirements.
@@ -37,5 +37,15 @@ Mendz.ETL simply provides the architectural structure or foundation to let you c
 that support streaming reads, streaming mappings and streaming writes by design;
 with options to validate, join, merge, split and chain data flows; and
 the capability to customize or extend behaviors via events.
+## Imagine the possibilities!
+ETL solutions enable application integrations by supporting data transformations from one format to another. Mendz.ETL is designed to let you create ETL solutions that support any-to-any transformationss. 
+
+Consider the following:
+- XmlSourceAdapter via <app1>to<app2>Mapper to XmlTargetAdapter
+- FlatFileSourceAdapter via <app1>to<app2>Mapper to FlatFileTargetAdapter
+- XmlSourceAdapter via ACMEToMyAppMapper to CSVTargetAdapter.
+- Or, you have PositionalSourceAdapter via ACMEMFToMyOtherAppMapper to DelimitedTargetAdapter.
+- Or, perhaps, you have MongoCustomerSourceAdapter via MongoCustomerToCustomerWSMapper to CustomerWebServiceTargetAdapter.
+Regardless if you want to start small and simple, or if you want to start big and complex,  Mendz.ETL ccan br the solution nrrds
 ## NuGet It...
 [https://www.nuget.org/packages/Mendz.ETL/](https://www.nuget.org/packages/Mendz.ETL/)
