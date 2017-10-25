@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Mendz</Authors>
+    <Company>Mendz</Company>
+    <Description>Provides APIs for developing extract, transform and load (ETL) solutions.</Description>
+    <Copyright>© 2017 Mendz. All rights reserved.</Copyright>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/etmendz/Mendz.ETL</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/etmendz/Mendz.ETL</RepositoryUrl>
+    <PackageTags>etl</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
 </Project>
