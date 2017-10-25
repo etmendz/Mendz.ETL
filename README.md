@@ -3,6 +3,34 @@ Provides APIs for developing extract, transform and load (ETL) solutions.
 ## Namespace
 Mendz.ETL
 ### Contents
+Name | Description
+---- | -----------
+Router | The ETL router that provides methods to execute the ETL.
+DocumentSpecification | Represents a document specficication and details.
+SourceAdapterBase | The base source adapter.
+MapperBase | The base mapper.
+TargetAdapterBase | The base target adapter.
+ValidatorBase | The base validator.
+JoinerBase | The base joiner.
+ISourceAdapter | Defines a source that extracts input.
+IMapper | Defines a mapper that transforms inputs to outputs.
+ITargetAdapter | Defines a target that loads output.
+IValidator | Defines a validator.
+IJoiner | Defines a joiner.
+ITargetable | Defines a targetable source.
+ISourceable | Defines a sourceable target.
+ETLSourceAdapterException | Represents a source adapter exception.
+ETLMapperException | Represents a mapper exception.
+ETLTargetAdapterException | Represents a target adapter exception.
+ETLValidatorException | Represents a validator exception.
+ETLSourceAdapterEventHandler | Represents a source adapter event handler.
+ETLSourceAdapterEventArgs | Represents a source adapter event argument.
+ETLMapperEventHandler | Represents a mapper event handler.
+ETLMapperEventArgs | Represents a mapper event argument.
+ETLTargetAdapterEventHandler | Represents a target adapter event handler.
+ETLTargetAdapterEventArgs | Represents a target adapter event argument.
+ETLValidatorEventHandler | Represents a validator event handler.
+ETLValidatorEventArgs | Represents a validator event argument.
 ## The Ingredients
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
 1. **Source adapter**, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
