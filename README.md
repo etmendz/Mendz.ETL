@@ -29,9 +29,13 @@ These ingredients are designed to work together to complete an extract, transfor
 The ingredients can be created to explicitly solve a simple ETL requirement. Or,
 they can also be created "generic" and configuration driven to solve for various complex ETL requirements.
 
+The source adapters, mappers, target adapters and validators also support event driven development.
+This feature provides greater flexibility in defining custom behaviors and processes during an ETL operation.
+
 Mendz.ETL, therefore, is not the product. The ETL solution you create using Mendz.ETL is the product.
 Mendz.ETL simply provides the architectural structure or foundation to let you create ETL solutions
-that support streaming reads, streaming mappings and streaming writes by design,
-with options to validate, join, merge, split and chain data flows. 
+that support streaming reads, streaming mappings and streaming writes by design;
+with options to validate, join, merge, split and chain data flows; and
+the capability to customize or extend behaviors via events.
 ## NuGet It...
 [https://www.nuget.org/packages/Mendz.ETL/](https://www.nuget.org/packages/Mendz.ETL/)
