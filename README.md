@@ -38,7 +38,7 @@ that support streaming reads, streaming mappings and streaming writes by design;
 with options to validate, join, merge, split and chain data flows; and
 the capability to customize or extend behaviors via events.
 ## Imagine the possibilities!
-ETL solutions enable application integrations by supporting data transformations from one format to another. Mendz.ETL is designed to let you create ETL solutions that support any-to-any transformationss. 
+ETL solutions enable application integrations by supporting data transformations from one format to another. Mendz.ETL is designed to let you create ETL solutions that support any-to-any transformations.
 
 You can, for example, create direct, one-off ETL solutions:
 - ACMEOrderSourceAdapter via ACMEOrderToMyOrderMapper to MyOrderTargetAdapter
