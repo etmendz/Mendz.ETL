@@ -5,22 +5,24 @@ Mendz.ETL
 ### Contents
 ## The Ingredients
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
-1. Source adapter, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
-2. Mapper, which transforms the inputs to outputs. Can derive from MapperBase and implement abstract method TransformInputToOutput(). Call via Transform() method.
-3. Target adapter, which loads outputs to the target. Can derive from TargetAdapterBase and implement abstract method LoadOutput(). Call via Load() method.
+1. **Source adapter**, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
+2. **Mapper**, which transforms the inputs to outputs. Can derive from MapperBase and implement abstract method TransformInputToOutput(). Call via Transform() method.
+3. **Target adapter**, which loads outputs to the target. Can derive from TargetAdapterBase and implement abstract method LoadOutput(). Call via Load() method.
 
 Mendz.ETL adds two optional ingredients:
-1. Validator, which can be used to validate the source (before extracting) or the target (after loading). Can derive from ValidatorBase and implement abstract method ValidateDocument(). Call via Validate() method.
-2. Joiner, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from JoinerBase and implement abstract method Join(). Call via same implemented Join() method.
+1. **Validator**, which can be used to validate the source (before extracting) or the target (after loading). Can derive from ValidatorBase and implement abstract method ValidateDocument(). Call via Validate() method.
+2. **Joiner**, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from JoinerBase and implement abstract method Join(). Call via same implemented Join() method.
 ## The Router
 When the ingredients are ready, they can be put together and routed to execute the ETL operation.
-Mendz.ETL has the Router, which provides the following methods:
+**Mendz.ETL.Router** is a static class that provides the following static methods:
 - Route(), which routes the source via mapper to target.
 - ChainRoute(), which routes the source via mapper to target, then chains the result to another mapper/target pair, and then to another mapper/target pair, etc. until all mapper/target pairs are consumed.
 - MergeRoute(), which routes multiple source/mapper pairs to target.
 - SplitRoute(), which routes a source to multiple mapper/target pairs.
 - JoinRoute(), which joins multiple sources and routes the result via mapper to target.
 - JoinSplitRoute(), which joins multiple sources and routes the result to multiple mapper/target pairs.
+
+The Router is provided as an initial convenience. The ingredients you create using Mendz.ETL can be easily put together and executed through the existing Router methods. However, you can also create your own "router" methods to satisfy new and unique requirements in your ETL solutions.
 ## What is Mendz.ETL for?
 Mendz.ETL is a foundational library of APIs that can be used to create custom/proprietary ETL products and their SDKs.
 
