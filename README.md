@@ -40,12 +40,19 @@ the capability to customize or extend behaviors via events.
 ## Imagine the possibilities!
 ETL solutions enable application integrations by supporting data transformations from one format to another. Mendz.ETL is designed to let you create ETL solutions that support any-to-any transformationss. 
 
-Consider the following:
-- XmlSourceAdapter via <app1>to<app2>Mapper to XmlTargetAdapter
-- FlatFileSourceAdapter via <app1>to<app2>Mapper to FlatFileTargetAdapter
-- XmlSourceAdapter via ACMEToMyAppMapper to CSVTargetAdapter.
-- Or, you have PositionalSourceAdapter via ACMEMFToMyOtherAppMapper to DelimitedTargetAdapter.
-- Or, perhaps, you have MongoCustomerSourceAdapter via MongoCustomerToCustomerWSMapper to CustomerWebServiceTargetAdapter.
+You can, for example, create direct, one-off ETL solutions:
+- ACMEOrderSourceAdapter via ACMEOrderToMyOrderMapper to MyOrderTargetAdapter
+- PartnerInvoiceSourceAdapter via PartnerInvoiceToAcknowledgementReceiptMapper to AcknowledgementReceiptTargetAdapter
+- JournalSourceAdapter via JournalToBalanceSheetMapper to BalanceSheetTargetAdapter,
+via BalanceSheetToFinancialStatementMapper to FinancialStatementTargetAdapter.
+
+Or, you can, for example, create configurable/re-useable components for your ETL solutions:
+- XmlSourceAdapter via XsltMapper to XmlTargetAdapter
+- FlatFileSourceAdapter via FlatFileMapper to FlatFileTargetAdapter
+- XmlSourceAdapter via XsltMapper to FlatFileTargetAdapter.
+- FlatFileSourceAdapter via FlatFileToXmlMapper to XmlTargetAdapter.
+- MongoCustomerSourceAdapter via JSONToXmlMapper to CustomerWSTargetAdapter.
+- CustomerWSSourceAdapter via XmlToJSONMapper to MongoCustomerTargetAdapter.
 Regardless if you want to start small and simple, or if you want to start big and complex,  Mendz.ETL ccan br the solution nrrds
 ## NuGet It...
 [https://www.nuget.org/packages/Mendz.ETL/](https://www.nuget.org/packages/Mendz.ETL/)
