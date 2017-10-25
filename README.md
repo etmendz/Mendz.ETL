@@ -5,18 +5,18 @@ Mendz.ETL
 ### Contents
 ## The Ingredients
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
-1. Source adapter, which extracts the inputs from the source.
-2. Mapper, which transforms the inputs to outputs.
-3. Target adapter, which loads outputs to the target.
+1. Source adapter, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
+2. Mapper, which transforms the inputs to outputs. Can derive from MapperBase and implement abstract method TransformInputToOutput(). Call via Transform() method.
+3. Target adapter, which loads outputs to the target. Can derive from TargetAdapterBase and implement abstract method LoadOutput(). Call via Load() method.
 
 Mendz.ETL adds two optional ingredients:
-1. Validator, which can be used to validate the source (before extracting) or the target (after loading).
-2. Joiner, which can be used to extract, query and join multiple sources in to mappable inputs.
+1. Validator, which can be used to validate the source (before extracting) or the target (after loading). Can derive from ValidatorBase and implement abstract method ValidateDocument(). Call via Validate() method.
+2. Joiner, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from JoinerBase and implement abstract method Join(). Call via same implemented Join() method.
 ## The Router
 When the ingredients are ready, they can be put together and routed to execute the ETL operation.
 Mendz.ETL has the Router, which provides the following methods:
 - Route(), which routes the source via mapper to target.
-- ChainRoute(), which routes the source via mapper to target, and chains the result to another mapper/target pair, and then another, and so on.
+- ChainRoute(), which routes the source via mapper to target, then chains the result to another mapper/target pair, and then to another mapper/target pair, etc. until all mapper/target pairs are consumed.
 - MergeRoute(), which routes multiple source/mapper pairs to target.
 - SplitRoute(), which routes a source to multiple mapper/target pairs.
 - JoinRoute(), which joins multiple sources and routes the result via mapper to target.
@@ -53,6 +53,5 @@ Or, you can, for example, create configurable/re-useable components for your ETL
 - FlatFileSourceAdapter via FlatFileToXmlMapper to XmlTargetAdapter.
 - MongoCustomerSourceAdapter via JSONToXmlMapper to CustomerWSTargetAdapter.
 - CustomerWSSourceAdapter via XmlToJSONMapper to MongoCustomerTargetAdapter.
-Regardless if you want to start small and simple, or if you want to start big and complex,  Mendz.ETL ccan br the solution nrrds
 ## NuGet It...
 [https://www.nuget.org/packages/Mendz.ETL/](https://www.nuget.org/packages/Mendz.ETL/)
