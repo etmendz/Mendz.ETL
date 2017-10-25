@@ -83,5 +83,21 @@ Or, you can, for example, create configurable/re-useable components for your ETL
 - FlatFileSourceAdapter via FlatFileToXmlMapper to XmlTargetAdapter.
 - MongoCustomerSourceAdapter via JSONToXmlMapper to CustomerWSTargetAdapter.
 - CustomerWSSourceAdapter via XmlToJSONMapper to MongoCustomerTargetAdapter.
+
+Sample use/execution:
+```C#
+...
+// initialize document specifications and validators...
+ISourceAdapter source = new XmlSourceAdapter();
+// source.SourceSpecification = sourceSpecification;
+// source.Validator = sourceXmlValidator;
+IMapper mapper = new XsltMapper();
+// set mapper properties...
+ITargetAdapter target = new FlatFileTargetAdapter();
+// target.TargetSpecification = targetSpecification;
+// target.Validator = targetXmlValidator;
+Router.Route(source, mapper, target);
+...
+```
 ## NuGet It...
 [https://www.nuget.org/packages/Mendz.ETL/](https://www.nuget.org/packages/Mendz.ETL/)
