@@ -35,9 +35,9 @@ ETLValidatorEventArgs | Represents a validator event argument.
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
 1. **Source adapter**, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
 2. **Mapper**, which transforms the inputs to outputs. Can derive from MapperBase and implement abstract method TransformInputToOutput(). Call via Transform() method.
-3. **Target adapter**, which loads outputs to the target. Can derive from TargetAdapterBase and implement abstract method LoadOutput(). Call via Load() method.
+3. **Target adapter**, which loads the outputs to the target. Can derive from TargetAdapterBase and implement abstract method LoadOutput(). Call via Load() method.
 
-Mendz.ETL adds two optional ingredients:
+Mendz.ETL adds two (2) optional ingredients:
 1. **Validator**, which can be used to validate the source (before extracting) or the target (after loading). Can derive from ValidatorBase and implement abstract method ValidateDocument(). Call via Validate() method.
 2. **Joiner**, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from JoinerBase and implement abstract method Join(). Call via same implemented Join() method.
 ## The Router
@@ -50,7 +50,7 @@ When the ingredients are ready, they can be put together and routed to execute t
 - JoinRoute(), which joins multiple sources and routes the result via mapper to target.
 - JoinSplitRoute(), which joins multiple sources and routes the result to multiple mapper/target pairs.
 
-The Router is provided as an initial convenience. The ingredients you create using Mendz.ETL can be easily put together and executed through the existing Router methods. However, you can also create your own "router" methods to satisfy new and unique requirements in your ETL solutions.
+The ingredients you create using Mendz.ETL can be easily put together and executed through the existing Router methods. However, you can also create your own "router methods" to satisfy new and unique requirements in your ETL solutions.
 ## What is Mendz.ETL for?
 Mendz.ETL is a foundational library of APIs that can be used to create custom/proprietary ETL products and their SDKs.
 
@@ -87,12 +87,12 @@ Or, you can, for example, create configurable/re-useable components for your ETL
 Sample use/execution:
 ```C#
 ...
-// initialize document specifications and validators...
+// ToDo: initialize document specifications and validators...
 ISourceAdapter source = new XmlSourceAdapter();
 // source.SourceSpecification = sourceSpecification;
 // source.Validator = sourceXmlValidator;
 IMapper mapper = new XsltMapper();
-// set mapper properties...
+// ToDo: set mapper properties...
 ITargetAdapter target = new FlatFileTargetAdapter();
 // target.TargetSpecification = targetSpecification;
 // target.Validator = targetXmlValidator;
