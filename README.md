@@ -42,7 +42,7 @@ Mendz.ETL adds two (2) optional ingredients:
 2. **Joiner**, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from JoinerBase and implement abstract method Join(). Call via same implemented Join() method.
 ## The Router
 When the ingredients are ready, they can be put together and routed to execute the ETL operation.
-**Mendz.ETL.Router** is a static class that provides the following static methods:
+[Mendz.ETL.Router](https://github.com/etmendz/Mendz.ETL/wiki/Router) is a static class that provides the following static methods:
 - Route(), which routes the source via mapper to target.
 - ChainRoute(), which routes the source via mapper to target, then chains the result to another mapper/target pair, and then to another mapper/target pair, etc. until all mapper/target pairs are consumed.
 - MergeRoute(), which routes multiple source/mapper pairs to target.
