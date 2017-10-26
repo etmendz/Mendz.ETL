@@ -6,7 +6,7 @@ Mendz.ETL
 Name | Description
 ---- | -----------
 Router | The ETL router that provides methods to execute the ETL.
-DocumentSpecification | Represents a document specficication and details.
+DocumentSpecification | Represents a document specification and details.
 SourceAdapterBase | The base source adapter.
 MapperBase | The base mapper.
 TargetAdapterBase | The base target adapter.
