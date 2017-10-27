@@ -14,6 +14,11 @@ namespace Mendz.ETL
         /// Gets or sets the input.
         /// </summary>
         public string Input { get; set; }
+
+        /// <summary>
+        /// Gets or sets an indicator if the source is valid.
+        /// </summary>
+        public bool IsValid { get; set; } = true;
     }
 
     public delegate void ETLMapperEventHandler(IMapper mapper, ETLMapperEventArgs e);
@@ -52,6 +57,11 @@ namespace Mendz.ETL
         /// Gets or sets the target document specification.
         /// </summary>
         public DocumentSpecification TargetSpecification { get; set; }
+
+        /// <summary>
+        /// Gets or sets an indicator if the target is valid.
+        /// </summary>
+        public bool IsValid { get; set; } = true;
     }
 
     public delegate void ETLValidatorEventHandler(IValidator validator, ETLValidatorEventArgs e);
@@ -66,5 +76,10 @@ namespace Mendz.ETL
         /// Gets or sets the exception thrown by the validation for the event handler.
         /// </summary>
         public Exception Exception { get; set; }
+
+        /// <summary>
+        /// Gets or sets an indicator if the document is valid.
+        /// </summary>
+        public bool IsValid { get; set; } = true;
     }
 }

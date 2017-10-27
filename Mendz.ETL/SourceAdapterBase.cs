@@ -18,7 +18,6 @@ namespace Mendz.ETL
 
         public virtual IEnumerable<string> Extract()
         {
-            bool isOK = true;
             ETLSourceAdapterEventArgs e = new ETLSourceAdapterEventArgs()
             {
                 SourceSpecification = SourceSpecification
@@ -26,9 +25,9 @@ namespace Mendz.ETL
             OnSourceAdapterStart?.Invoke(this, e);
             if (SourceValidator != null)
             {
-                isOK = SourceValidator.Validate(SourceSpecification);
+                e.IsValid = SourceValidator.Validate(SourceSpecification);
             }
-            if (isOK)
+            if (e.IsValid)
             {
                 OnExtracting?.Invoke(this, e);
                 foreach (var item in ExtractInput())

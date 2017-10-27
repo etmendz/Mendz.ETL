@@ -32,7 +32,7 @@ namespace Mendz.ETL
             }
             if (TargetValidator != null)
             {
-                TargetValidator.Validate(TargetSpecification);
+                e.IsValid = TargetValidator.Validate(TargetSpecification);
             }
             OnTargetAdapterEnd?.Invoke(this, e);
         }

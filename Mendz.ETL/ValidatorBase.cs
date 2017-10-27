@@ -14,7 +14,7 @@ namespace Mendz.ETL
 
         public virtual bool Validate(DocumentSpecification documentSpecification)
         {
-            bool isOK = true;
+            bool isValid = true;
             if (documentSpecification.IsValidate)
             {
                 ETLValidatorEventArgs e = new ETLValidatorEventArgs()
@@ -24,7 +24,7 @@ namespace Mendz.ETL
                 OnValidating?.Invoke(this, e);
                 try
                 {
-                    isOK = ValidateDocument(documentSpecification);
+                    isValid = ValidateDocument(documentSpecification);
                 }
                 catch (Exception exception)
                 {
@@ -35,12 +35,13 @@ namespace Mendz.ETL
                     else
                     {
                         e.Exception = exception;
-                        isOK = false;
+                        isValid = false;
                     }
                 }
+                e.IsValid = isValid;
                 OnValidated?.Invoke(this, e);
             }
-            return isOK;
+            return isValid;
         }
 
         /// <summary>
