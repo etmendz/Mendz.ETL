@@ -8,8 +8,8 @@ namespace Mendz.ETL
     public abstract class MapperBase : IMapper
     {
         public event ETLMapperEventHandler OnMapperStart;
-        public event ETLMapperEventHandler OnMapping;
-        public event ETLMapperEventHandler OnMapped;
+        public event ETLMapperEventHandler OnTransforming;
+        public event ETLMapperEventHandler OnTransformed;
         public event ETLMapperEventHandler OnMapperEnd;
 
         public virtual IEnumerable<string> Transform(IEnumerable<string> input, DocumentSpecification sourceSpecification, DocumentSpecification targetSpecification)
@@ -23,9 +23,9 @@ namespace Mendz.ETL
             foreach (var item in input)
             {
                 e.Input = item;
-                OnMapping?.Invoke(this, e);
+                OnTransforming?.Invoke(this, e);
                 e.Output = TransformInputToOutput(item, e.SourceSpecification, e.TargetSpecification);
-                OnMapped?.Invoke(this, e);
+                OnTransformed?.Invoke(this, e);
                 yield return e.Output;
             }
             OnMapperEnd?.Invoke(this, e);

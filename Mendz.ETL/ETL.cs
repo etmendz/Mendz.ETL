@@ -6,6 +6,11 @@ namespace Mendz.ETL
     public class ETLSourceAdapterEventArgs : EventArgs
     {
         /// <summary>
+        /// Gets or sets the source document specification.
+        /// </summary>
+        public DocumentSpecification SourceSpecification { get; set; }
+
+        /// <summary>
         /// Gets or sets the input.
         /// </summary>
         public string Input { get; set; }
@@ -42,6 +47,11 @@ namespace Mendz.ETL
         /// Gets or sets the output.
         /// </summary>
         public string Output { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target document specification.
+        /// </summary>
+        public DocumentSpecification TargetSpecification { get; set; }
     }
 
     public delegate void ETLValidatorEventHandler(IValidator validator, ETLValidatorEventArgs e);

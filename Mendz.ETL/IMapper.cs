@@ -13,16 +13,16 @@ namespace Mendz.ETL
         event ETLMapperEventHandler OnMapperStart;
 
         /// <summary>
-        /// Raised before the input is mapped to an output.
+        /// Raised before the input is transformed to an output.
         /// This event can be used to perform pre-mapping operations on the input.
         /// </summary>
-        event ETLMapperEventHandler OnMapping;
+        event ETLMapperEventHandler OnTransforming;
 
         /// <summary>
-        /// Raised after the input is mapped to an output.
+        /// Raised after the input is transformed to an output.
         /// This event can be used to perform post-mapping operations on the output.
         /// </summary>
-        event ETLMapperEventHandler OnMapped;
+        event ETLMapperEventHandler OnTransformed;
 
         /// <summary>
         /// Raised when the mapper ends.

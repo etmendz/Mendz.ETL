@@ -23,7 +23,7 @@ namespace Mendz.ETL
         public string Pattern { get; set; }
 
         /// <summary>
-        /// Gets or sets the document format name (ex, delimited, positional, xml, etc.)
+        /// Gets or sets the document format name (ex. delimited, positional, xml, etc.)
         /// </summary>
         public string Format { get; set; }
 

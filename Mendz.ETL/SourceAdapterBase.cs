@@ -19,7 +19,10 @@ namespace Mendz.ETL
         public virtual IEnumerable<string> Extract()
         {
             bool isOK = true;
-            ETLSourceAdapterEventArgs e = new ETLSourceAdapterEventArgs();
+            ETLSourceAdapterEventArgs e = new ETLSourceAdapterEventArgs()
+            {
+                SourceSpecification = SourceSpecification
+            };
             OnSourceAdapterStart?.Invoke(this, e);
             if (SourceValidator != null)
             {

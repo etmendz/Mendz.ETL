@@ -18,14 +18,14 @@ namespace Mendz.ETL
 
         public virtual void Load(IEnumerable<string> output)
         {
-            ETLTargetAdapterEventArgs e = new ETLTargetAdapterEventArgs();
+            ETLTargetAdapterEventArgs e = new ETLTargetAdapterEventArgs()
+            {
+                TargetSpecification = TargetSpecification
+            };
             OnTargetAdapterStart?.Invoke(this, e);
             foreach (var item in output)
             {
-                e = new ETLTargetAdapterEventArgs()
-                {
-                    Output = item
-                };
+                e.Output = item;
                 OnLoading?.Invoke(this, e);
                 LoadOutput(e.Output);
                 OnLoaded?.Invoke(this, e);

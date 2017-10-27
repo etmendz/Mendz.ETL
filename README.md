@@ -31,6 +31,7 @@ ETLSourceAdapterException | Represents a source adapter exception.
 ETLMapperException | Represents a mapper exception.
 ETLTargetAdapterException | Represents a target adapter exception.
 ETLValidatorException | Represents a validator exception.
+ETLJoinerException | Represents a joiner exception.
 ## The Ingredients
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
 1. **Source adapter**, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
