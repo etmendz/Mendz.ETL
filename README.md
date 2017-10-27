@@ -34,13 +34,13 @@ ETLValidatorException | Represents a validator exception.
 ETLJoinerException | Represents a joiner exception.
 ## The Ingredients
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
-1. **Source adapter**, which extracts the inputs from the source. Can derive from SourceAdapterBase and implement abstract method ExtractInput(). Call via Extract() method.
-2. **Mapper**, which transforms the inputs to outputs. Can derive from MapperBase and implement abstract method TransformInputToOutput(). Call via Transform() method.
-3. **Target adapter**, which loads the outputs to the target. Can derive from TargetAdapterBase and implement abstract method LoadOutput(). Call via Load() method.
+1. **Source adapter**, which extracts the inputs from the source. Can derive from [SourceAdapterBase](https://github.com/etmendz/Mendz.ETL/wiki/SourceAdapterBase) and implement abstract method ExtractInput(). Call via Extract() method.
+2. **Mapper**, which transforms the inputs to outputs. Can derive from [MapperBase](https://github.com/etmendz/Mendz.ETL/wiki/MapperBase) and implement abstract method TransformInputToOutput(). Call via Transform() method.
+3. **Target adapter**, which loads the outputs to the target. Can derive from [TargetAdapterBase](https://github.com/etmendz/Mendz.ETL/wiki/TargetAdapterBase) and implement abstract method LoadOutput(). Call via Load() method.
 
 Mendz.ETL adds two (2) optional ingredients:
-1. **Validator**, which can be used to validate the source (before extracting) or the target (after loading). Can derive from ValidatorBase and implement abstract method ValidateDocument(). Call via Validate() method.
-2. **Joiner**, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from JoinerBase and implement abstract method Join(). Call via same implemented Join() method.
+1. **Validator**, which can be used to validate the source (before extracting) or the target (after loading). Can derive from [ValidatorBase](https://github.com/etmendz/Mendz.ETL/wiki/ValidatorBase) and implement abstract method ValidateDocument(). Call via Validate() method.
+2. **Joiner**, which can be used to extract, query and join multiple sources in to mappable inputs. Can derive from [JoinerBase](https://github.com/etmendz/Mendz.ETL/wiki/JoinerBase) and implement abstract method Join(). Call via same implemented Join() method.
 ## The Router
 When the ingredients are ready, they can be put together and routed to execute the ETL operation.
 [Mendz.ETL.Router](https://github.com/etmendz/Mendz.ETL/wiki/Router) is a static class that provides the following static methods:
