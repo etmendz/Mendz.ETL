@@ -50,13 +50,5 @@ namespace Mendz.ETL
         /// <param name="documentSpecification">The document specification.</param>
         /// <returns>True if validation is passed. Otherwise, false.</returns>
         protected abstract bool ValidateDocument(DocumentSpecification documentSpecification);
-
-        bool IValidator.IsThrowValidationException
-        {
-            get => IsThrowValidationException;
-            set => IsThrowValidationException = value;
-        }
-
-        bool IValidator.Validate(DocumentSpecification documentSpecification) => Validate(documentSpecification);
     }
 }

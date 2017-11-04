@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Mendz.ETL
 {
+    /// <summary>
+    /// Represents an exception from a mapper.
+    /// </summary>
     [Serializable]
     public class ETLMapperException : Exception
     {

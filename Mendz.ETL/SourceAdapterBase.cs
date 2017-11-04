@@ -33,6 +33,7 @@ namespace Mendz.ETL
                 foreach (var item in ExtractInput())
                 {
                     e.Input = item;
+                    e.Counter++;
                     OnExtracted?.Invoke(this, e);
                     yield return e.Input;
                 }
@@ -57,19 +58,5 @@ namespace Mendz.ETL
         /// </para>
         /// </remarks>
         protected abstract IEnumerable<string> ExtractInput();
-
-        DocumentSpecification ISourceAdapter.SourceSpecification
-        {
-            get => SourceSpecification;
-            set => SourceSpecification = value;
-        }
-
-        IValidator ISourceAdapter.SourceValidator
-        {
-            get => SourceValidator;
-            set => SourceValidator = value;
-        }
-
-        IEnumerable<string> ISourceAdapter.Extract() => Extract();
     }
 }

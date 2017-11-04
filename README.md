@@ -1,8 +1,8 @@
 # Mendz.ETL
 Provides APIs for developing extract, transform and load (ETL) solutions. [Wiki](https://github.com/etmendz/Mendz.ETL/wiki)
-## Namespace
-Mendz.ETL
-### Contents
+## Namespaces
+### Mendz.ETL
+#### Contents
 Name | Description
 ---- | -----------
 Router | The ETL router that provides methods to execute the ETL.
@@ -32,6 +32,21 @@ ETLMapperException | Represents a mapper exception.
 ETLTargetAdapterException | Represents a target adapter exception.
 ETLValidatorException | Represents a validator exception.
 ETLJoinerException | Represents a joiner exception.
+IDataConverter | Defines a data converter.
+IDataFilter | Defines a data filter.
+IDataJoiner | Defines a data joiner.
+IDataMaker | Defines a data maker.
+IDataSplitter | Defines a data splitter.
+### Mendz.ETL.Common
+#### Contents
+Name | Description
+---- | -----------
+FullSourceAdapter | Represents a full extract source adapter.
+FullTargetAdapter | Represents a full load target adapter.
+LineSourceAdapter | Represents a line source adapter.
+LineTargetAdapter | Represents a line target adapter.
+PassThroughMapper | Represents a pass through mapper.
+EmptyDataFilter | Represents an empty data filter.
 ## The Ingredients
 With Mendz.ETL, an ETL solution has three (3) main ingredients:
 1. **Source adapter**, which extracts the inputs from the source. Can derive from [SourceAdapterBase](https://github.com/etmendz/Mendz.ETL/wiki/SourceAdapterBase) and implement abstract method ExtractInput(). Call via Extract() method.

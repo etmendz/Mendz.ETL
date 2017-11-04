@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Mendz.ETL
 {
+    /// <summary>
+    /// Represents an exception from a target adapter.
+    /// </summary>
     [Serializable]
     public class ETLTargetAdapterException : Exception
     {

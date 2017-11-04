@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Mendz.ETL
 {
+    /// <summary>
+    /// Represents an exception from a validator.
+    /// </summary>
     [Serializable]
     public class ETLValidatorException : Exception
     {

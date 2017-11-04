@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Mendz.ETL
 {
@@ -23,12 +25,23 @@ namespace Mendz.ETL
                 TargetSpecification = TargetSpecification
             };
             OnTargetAdapterStart?.Invoke(this, e);
-            foreach (var item in output)
+            using (BlockingCollection<string> bc = new BlockingCollection<string>())
             {
-                e.Output = item;
-                OnLoading?.Invoke(this, e);
-                LoadOutput(e.Output);
-                OnLoaded?.Invoke(this, e);
+                using (Task t = Task.Factory.StartNew(() => 
+                    LoadOutput(bc.GetConsumingEnumerable()),
+                    TaskCreationOptions.AttachedToParent & TaskCreationOptions.LongRunning))
+                {
+                    foreach (var item in output)
+                    {
+                        e.Output = item;
+                        OnLoading?.Invoke(this, e);
+                        bc.Add(e.Output);
+                        e.Counter++;
+                        OnLoaded?.Invoke(this, e);
+                    }
+                    bc.CompleteAdding();
+                    t.Wait();
+                }
             }
             if (TargetValidator != null)
             {
@@ -41,20 +54,6 @@ namespace Mendz.ETL
         /// Loads the output to the target.
         /// </summary>
         /// <param name="output">The output to load.</param>
-        protected abstract void LoadOutput(string output);
-
-        DocumentSpecification ITargetAdapter.TargetSpecification
-        {
-            get => TargetSpecification;
-            set => TargetSpecification = value;
-        }
-
-        IValidator ITargetAdapter.TargetValidator
-        {
-            get => TargetValidator;
-            set => TargetValidator = value;
-        }
-
-        void ITargetAdapter.Load(IEnumerable<string> output) => Load(output);
+        protected abstract void LoadOutput(IEnumerable<string> output);
     }
 }

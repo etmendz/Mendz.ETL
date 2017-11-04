@@ -11,14 +11,19 @@ namespace Mendz.ETL
         public DocumentSpecification SourceSpecification { get; set; }
 
         /// <summary>
+        /// Gets or sets an indicator if the source is valid.
+        /// </summary>
+        public bool IsValid { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the input.
         /// </summary>
         public string Input { get; set; }
 
         /// <summary>
-        /// Gets or sets an indicator if the source is valid.
+        /// Gets or sets how many times an input has been extracted.
         /// </summary>
-        public bool IsValid { get; set; } = true;
+        public int Counter { get; set; }
     }
 
     public delegate void ETLMapperEventHandler(IMapper mapper, ETLMapperEventArgs e);
@@ -30,6 +35,11 @@ namespace Mendz.ETL
         public DocumentSpecification SourceSpecification { get; set; }
 
         /// <summary>
+        /// Gets or sets the target document specification.
+        /// </summary>
+        public DocumentSpecification TargetSpecification { get; set; }
+
+        /// <summary>
         /// Gets or sets the input.
         /// </summary>
         public string Input { get; set; }
@@ -40,19 +50,14 @@ namespace Mendz.ETL
         public string Output { get; set; }
 
         /// <summary>
-        /// Gets or sets the target document specification.
+        /// Gets or sets how many times a transformation has been performed.
         /// </summary>
-        public DocumentSpecification TargetSpecification { get; set; }
+        public int Counter { get; set; }
     }
 
     public delegate void ETLTargetAdapterEventHandler(ITargetAdapter target, ETLTargetAdapterEventArgs e);
     public class ETLTargetAdapterEventArgs : EventArgs
     {
-        /// <summary>
-        /// Gets or sets the output.
-        /// </summary>
-        public string Output { get; set; }
-
         /// <summary>
         /// Gets or sets the target document specification.
         /// </summary>
@@ -62,6 +67,16 @@ namespace Mendz.ETL
         /// Gets or sets an indicator if the target is valid.
         /// </summary>
         public bool IsValid { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets the output.
+        /// </summary>
+        public string Output { get; set; }
+
+        /// <summary>
+        /// Gets or sets how many times an output has been loaded.
+        /// </summary>
+        public int Counter { get; set; }
     }
 
     public delegate void ETLValidatorEventHandler(IValidator validator, ETLValidatorEventArgs e);

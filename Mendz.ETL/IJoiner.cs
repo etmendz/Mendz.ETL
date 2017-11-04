@@ -29,6 +29,6 @@ namespace Mendz.ETL
         /// unless those events are explicitly triggered in the implementation.
         /// The new input should be returned as an enumerable/iterable string.
         /// </remarks>
-        IEnumerable<string> Join(List<ISourceAdapter> sources);
+        IEnumerable<string> Join(IList<ISourceAdapter> sources);
     }
 }

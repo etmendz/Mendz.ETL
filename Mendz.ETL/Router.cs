@@ -31,7 +31,7 @@ namespace Mendz.ETL
         /// The chaining targets should be ISourceable.
         /// If the iterated target is not ISourceable, the "chain" breaks/stops.
         /// </remarks>
-        public static void ChainRoute(ISourceAdapter source, IEnumerable<(IMapper mapper, ITargetAdapter target)> chain)
+        public static void ChainRoute(ISourceAdapter source, IList<(IMapper mapper, ITargetAdapter target)> chain)
         {
             ISourceAdapter s = source;
             foreach (var routing in chain)
@@ -54,7 +54,7 @@ namespace Mendz.ETL
         /// </summary>
         /// <param name="sources">The collection of source adapter and mapper pairs to merge from.</param>
         /// <param name="target">The target adapter.</param>
-        public static void MergeRoute(List<(ISourceAdapter source, IMapper mapper)> sources, ITargetAdapter target)
+        public static void MergeRoute(IList<(ISourceAdapter source, IMapper mapper)> sources, ITargetAdapter target)
         {
             foreach (var merge in sources)
             {
@@ -67,7 +67,7 @@ namespace Mendz.ETL
         /// </summary>
         /// <param name="source">The source adapter.</param>
         /// <param name="targets">The collection of mapper and target adapter pairs to split to.</param>
-        public static void SplitRoute(ISourceAdapter source, List<(IMapper mapper, ITargetAdapter target)> targets)
+        public static void SplitRoute(ISourceAdapter source, IList<(IMapper mapper, ITargetAdapter target)> targets)
         {
             List<BlockingCollection<string>> lbc = new List<BlockingCollection<string>>();
             List<Task> lt = new List<Task>();
@@ -97,8 +97,8 @@ namespace Mendz.ETL
             Task.WaitAll(lt.ToArray());
             for (int i = 0; i < targetCount; i++)
             {
-                lbc[i].Dispose();
                 lt[i].Dispose();
+                lbc[i].Dispose();
             }
         }
 
@@ -109,7 +109,7 @@ namespace Mendz.ETL
         /// <param name="sources">The source adapters to join.</param>
         /// <param name="mapper">The mapper.</param>
         /// <param name="target">The target adapter.</param>
-        public static void JoinRoute(IJoiner joiner, List<ISourceAdapter> sources, IMapper mapper, ITargetAdapter target)
+        public static void JoinRoute(IJoiner joiner, IList<ISourceAdapter> sources, IMapper mapper, ITargetAdapter target)
         {
             target.Load(
                 mapper.Transform(
@@ -122,7 +122,7 @@ namespace Mendz.ETL
         /// <param name="joiner">The joiner.</param>
         /// <param name="sources">The source adapters to join.</param>
         /// <param name="targets">The collection of mapper and target adapter pairs to split to.</param>
-        public static void JoinSplitRoute(IJoiner joiner, List<ISourceAdapter> sources, List<(IMapper mapper, ITargetAdapter target)> targets)
+        public static void JoinSplitRoute(IJoiner joiner, IList<ISourceAdapter> sources, IList<(IMapper mapper, ITargetAdapter target)> targets)
         {
             List<BlockingCollection<string>> lbc = new List<BlockingCollection<string>>();
             List<Task> lt = new List<Task>();
@@ -152,8 +152,8 @@ namespace Mendz.ETL
             Task.WaitAll(lt.ToArray());
             for (int i = 0; i < targetCount; i++)
             {
-                lbc[i].Dispose();
                 lt[i].Dispose();
+                lbc[i].Dispose();
             }
         }
     }

@@ -12,7 +12,9 @@ namespace Mendz.ETL
         public event ETLMapperEventHandler OnTransformed;
         public event ETLMapperEventHandler OnMapperEnd;
 
-        public virtual IEnumerable<string> Transform(IEnumerable<string> input, DocumentSpecification sourceSpecification, DocumentSpecification targetSpecification)
+        public virtual IEnumerable<string> Transform(IEnumerable<string> input, 
+            DocumentSpecification sourceSpecification, 
+            DocumentSpecification targetSpecification)
         {
             ETLMapperEventArgs e = new ETLMapperEventArgs()
             {
@@ -25,6 +27,7 @@ namespace Mendz.ETL
                 e.Input = item;
                 OnTransforming?.Invoke(this, e);
                 e.Output = TransformInputToOutput(item, e.SourceSpecification, e.TargetSpecification);
+                e.Counter++;
                 OnTransformed?.Invoke(this, e);
                 yield return e.Output;
             }
@@ -39,7 +42,5 @@ namespace Mendz.ETL
         /// <param name="targetSpecification">The target's document specification.</param>
         /// <returns>The transformation output.</returns>
         protected abstract string TransformInputToOutput(string input, DocumentSpecification sourceSpecification, DocumentSpecification targetSpecification);
-
-        IEnumerable<string> IMapper.Transform(IEnumerable<string> input, DocumentSpecification sourceSpecification, DocumentSpecification targetSpecification) => Transform(input, sourceSpecification, targetSpecification);
     }
 }
